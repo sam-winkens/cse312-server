@@ -13,20 +13,20 @@ class Request:
             if splitRequest[i] == "" and splitRequest[i+1] == "":
                 break
             else:
-                currentLine = splitRequest[i].split(": ")
+                currentLine = splitRequest[i].split(":")
                 # the keys of the headers are case-insensitive so this should work
-                key = currentLine[0].lower()
-                val = currentLine[1].lower()
+                key = currentLine[0].lower().strip()
+                val = currentLine[1].lower().strip()
                 self.headers[key] = val
 
                 # for each "header" we add check if its a cookies header so does it exist at all?
                 if key == "cookie":
                     # we need to parse this cookie's val. 
-                    specialVals = val.split("; ")
+                    specialVals = val.split(";")
                     for line in specialVals:
                         l = line.split("=")
-                        key = l[0].lower()
-                        val = l[1].lower()
+                        key = l[0].lower().strip()
+                        val = l[1].lower().strip()
                         self.cookies[key] = val
 
 
