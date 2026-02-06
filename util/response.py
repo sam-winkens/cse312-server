@@ -24,6 +24,7 @@ class Response:
         pass
 
     def to_data(self):
+        # append the no sniff header here so its always attached to every response.
         return b''
 
 
